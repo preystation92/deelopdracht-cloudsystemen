@@ -1,0 +1,697 @@
+:root {
+  --header-color: #228B22;
+  /*Bosgroen*/
+  --nav-color: #FAF3DD;
+  /*Crème*/
+  --hover-color: #FA8072;
+  /*zalmroze*/
+  --footer-color: #C68E17;
+  /*Karamel*/
+  --text-color: #333333;
+  --hoverText-color: #E6E6FA;
+  --background-color: #FFFFFF;
+  --hoverInput-color: #E6E6FA;
+  --widthItems: 350px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  /*Dut is voor de footer beneden te houden*/
+}
+
+body {
+  background-color: var(--background-color);
+  display: grid;
+  grid-template-areas:
+    "header header header header"
+    " nav nav nav nav"
+    "aside main main main"
+    "aside main main main"
+    "footer footer footer footer"
+  ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 5px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+header {
+  grid-area: header;
+  background-color: var(--header-color);
+}
+
+nav {
+  grid-area: nav;
+}
+
+aside {
+  grid-area: aside;
+
+}
+
+main {
+  grid-area: main;
+  margin-top: 110px;
+
+}
+
+footer {
+  grid-area: footer;
+  background-color: black;
+  color: white;
+  height: 100px;
+
+}
+
+footer p {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.flex-header {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  flex-direction: row;
+  padding: 10px 20px;
+  justify-content: space-between;
+  color: white;
+  height: 70px;
+  top: 0;
+  align-items: center;
+  z-index: 998;
+}
+
+.flex-header h1 {
+  font-size: 35px;
+  margin-right: auto;
+  /*komt naast logo te staan*/
+  padding-left: 10px;
+
+}
+
+
+
+.flex-menu {
+  display: flex;
+  position: fixed;
+  list-style: none;
+  text-transform: capitalize;
+  background-color: var(--header-color);
+  top: 70px;
+  width: 100%;
+  z-index: 997;
+}
+
+
+.flex-menu li {
+  margin: 0 10px;
+  text-decoration: none;
+
+}
+
+.flex-menu a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 35px;
+  transition: 1s;
+
+}
+
+
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+
+
+.flex-menu a:hover {
+  background-color: var(--hover-color);
+  border-radius: 5px;
+
+}
+
+
+
+
+.sticky-footer {
+  position: sticky;
+  top: 100%;
+  background-color: var(--footer-color);
+}
+
+.aside-menu {
+  margin-top: 180px;
+  margin-left: 10px;
+
+}
+
+
+
+.aside-contact {
+  margin-top: 190px;
+  margin-left: 20px;
+}
+
+.aside-contact h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.aside-menu ul li {
+  list-style: none;
+  font-size: 25px;
+  font-weight: bold;
+
+}
+
+.aside-menu img {
+  object-fit: cover;
+  /*Dit zorgt ervoor dat alle afbeeldingen kloppen.*/
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.aside-menu h2 {
+  font-size: 25px;
+  margin-left: 120px;
+}
+
+.aside-menu ol li {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 15px;
+  list-style-type: upper-roman;
+}
+
+#teaser {
+  background-image: url(../assets/images/sfeerlbeeld.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  aspect-ratio: 16 / 9;
+  /* Standaardverhouding */
+}
+
+.main-index-p {
+  width: 70%;
+  text-align: left;
+  font-size: 30px;
+  color: var(--text-color);
+}
+
+.flex-index-textEnFoto {
+  display: flex;
+  gap: 280px;
+  padding: 20px;
+}
+
+.flex-container-main-shop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 60px;
+
+}
+
+.flex-items-shop figcaption {
+  color: white;
+  font-weight: bold;
+  text-align: right;
+  z-index: 1000;
+  margin-top: -20px;
+}
+
+.flex-items-shop {
+  position: relative;
+  border-radius: 20px;
+  max-width: 400px;
+  text-align: center;
+  color: var(--hoverText-color);
+  margin-bottom: 10px;
+}
+
+.button-shop {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+main section {
+  /*zonder dit komt de footer over de tekst van flex.*/
+  margin-bottom: 50px;
+}
+
+.flex-container-main-shop img {
+  height: auto;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.flex-container-main-shop h2 {
+  position: absolute;
+  background-color: #333333;
+  font-size: 20px;
+  width: 100%;
+  height: 40px;
+  bottom: -36px;
+}
+
+
+.form-contact {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 900px;
+  margin-left: 200px;
+  margin-top: 110px;
+  border: 1px solid black;
+}
+
+
+input:focus {
+  background-color: var(--hoverInput-color);
+  outline: none;
+}
+
+textarea:focus {
+  background-color: var(--hoverInput-color);
+  outline: none;
+}
+
+input:invalid {
+  background-color: red;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+form textarea {
+  resize: none;
+  /*Textarea kan niet meer groter worden*/
+
+}
+
+form input[type="submit"] {
+  background-color: black;
+  color: white;
+}
+
+form input[type="submit"]:hover {
+  background-color: white;
+  color: black;
+}
+
+.flex-index {
+  position: relative;
+  border-radius: 20px;
+  max-width: 400px;
+  text-align: center;
+  color: var(--hoverText-color);
+
+}
+
+main article {
+  position: relative;
+}
+
+.like-button {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  z-index: 100;
+  font-size: 32px;
+}
+
+.flex-index h2 {
+  position: absolute;
+  background-color: #333333;
+  font-size: 18px;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+
+}
+
+.flex-main-product {
+  display: flex;
+  flex-direction: row;
+  margin-top: 150px;
+  margin-left: 100px;
+  gap: 50px;
+}
+
+.flex-main-product img {
+  height: 600px;
+  object-fit: cover;
+}
+
+.flex-main-product ol li {
+  font-size: 16px;
+}
+
+
+
+
+.button-shop {
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  background-color: #007bff;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.button-shop:hover {
+  background-color: #0056b3;
+}
+
+
+.wishlist-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wishlist-button:hover {
+  background-color: blue;
+
+}
+
+/*CSS code voor winkelwagen*/
+.cart {
+  margin-top: 100px;
+  top: 180px;
+  left: 20px;
+  width: 400px;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.cart h2 {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.cart ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cart img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cart button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.cart button:hover {
+  background-color: #0056b3;
+}
+
+.flex-container-costumer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  list-style: none;
+}
+
+.flex-container-costumer .customer {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  width: 450px;
+}
+
+.flex-container-costumer .customer img {
+  border-radius: 50%;
+  width: 120px;
+  object-fit: cover;
+  margin: auto;
+}
+
+.flex-container-costumer .customer h3 {
+  font-size: 24px;
+  color: var(--text-color);
+}
+
+.flex-container-costumer .customer p {
+  font-size: 24px;
+  color: var(--text-color);
+}
+
+header input[type="search"] {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+header button {
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-left: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+header button:hover {
+  background-color: #0056b3;
+}
+
+.button-topic {
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-left: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-topic:hover {
+  background-color: #0056b3;
+}
+
+main h2 {
+  text-align: center;
+  margin: 30px 0px;
+  font-size: 30px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media (max-width: 576px) {
+  body {
+    grid-template-areas:
+      "header"
+      "nav"
+      "aside"
+      "main"
+      "footer";
+
+  }
+
+  .form-contact {
+    margin-left: 20px;
+  }
+
+  header img {
+    display: none;
+  }
+
+
+
+  .flex-index-textEnFoto {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flex-index-textEnFoto img {
+    width: 100%;
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    width: 90%;
+    word-wrap: break-word;
+    padding: 0 10px;
+  }
+
+  aside.menu img {
+    height: 1150px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 576px) {
+    .flex-header {
+      flex-direction: column;
+      align-items: flex-start;
+
+    }
+
+    .searchHeader input[type="search"],
+    header button {
+      display: none;
+    }
+
+    .flex-menu {
+      flex-direction: row;
+      align-items: center;
+
+    }
+
+    .aside-menu {
+
+      text-align: center;
+    }
+
+
+
+    .flex-container-main-shop {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .flex-items-shop img {
+      width: 100%;
+      height: auto;
+
+    }
+
+    .cart {
+      margin-top: 8000px;
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    body {
+      grid-template-areas:
+        "header"
+        "nav"
+        "aside"
+        "main"
+        "footer";
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr auto auto;
+    }
+
+    .form-contact {
+      margin-left: 20px;
+    }
+
+    .flex-index-textEnFoto {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flex-header {
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+    }
+
+    .flex-menu {
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 10px 0;
+    }
+
+    .flex-menu a {
+      font-size: 20px;
+    }
+
+    .flex-container-main-shop {
+      gap: 30px;
+    }
+
+    .flex-items-shop {
+      max-width: 90%;
+    }
+
+    aside.cart {
+      margin-top: 110px;
+    }
+
+
+  }
+
+  @media (max-width: 992px) {
+
+    .flex-menu a {
+      font-size: 22px;
+    }
+
+    .flex-container-main-shop {
+      gap: 60px;
+    }
+
+    .main-index-p p {
+      text-align: left;
+    }
+
+    .cart {
+      width: 80%;
+      margin: 50px auto;
+    }
+  }
+}

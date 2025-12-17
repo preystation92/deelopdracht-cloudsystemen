@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="nl-be">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receptionist shop</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/map.css">
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+  <header class="flex-header">
+    <img src="assets/images/logo.png" alt="logo van de site" height="50px">
+    <h1>Receptionist</h1>
+    <form action="" class="searchHeader">
+      <input type="search" name="" id="">
+      <button type="submit">Verzenden</button>
+    </form>
+  </header>>
+
+  <nav>
+    <ul class="flex-menu">
+      <li><a href="index.html">home</a></li>
+      <li><a href="shop.html">shop</a></li>
+      <li><a href="klanten.html">klanten</a></li>
+      <li><a href="contact.html">contact</a></li>
+    </ul>
+  </nav>
+  <aside class="cart">
+    <h2>Winkelwagen</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Totaal:</strong> €<span id="cart-total">0.00</span></p>
+    <button id="checkout-button">Afrekenen</button>
+  </aside>
+
+
+
+  <main>
+
+    <section class="flex-container-main-shop">
+      <article class="flex-items-shop">
+        <figure>
+          <a href="bulletproof.html"><img src="assets/images/bulletproofKoffie.jpg"
+              alt="Foto van bulletproof koffie"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Bulletproof koffie</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop"
+          onclick="addToCart('Bulletproof Koffie', 1.80, 'assets/images/bulletproofKoffie.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+
+        <figure>
+          <a href="griekse.html"><img src="assets/images/groene_boontjes_salade.jpg"
+              alt="Salade van groene boontjes"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Griekse salade van boontjes en feta</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop"
+          onclick="addToCart('Griekse salade van boontjes en feta', 3.50, 'assets/images/groene_boontjes_salade.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="ghee.html"><img src="assets/images/ghee.jpg" alt="Foto van ghee"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Ghee</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop" onclick="addToCart('Ghee', 1.50, 'assets/images/ghee.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="aziatische_rundvleessalade.html"><img src="assets/images/thaiBeef.jpg"
+              alt="Foto van Thai beef salade"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Aziatische rundvleessalade</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop"
+          onclick="addToCart('Aziatische rundvleessalade', 5.50, 'assets/images/thaiBeef.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="niçoise.html"><img src="assets/images/salade_nicoise.jpg" alt="Foto van salade nicoise"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Salad Niçoise</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop"
+          onclick="addToCart('Salade Niçoise', 4.50, 'assets/images/salade_nicoise.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="ceaser.html"><img src="assets/images/ceaserSalade.jpg" alt="Foto van een Ceaser salade"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Ceaser salade</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop"
+          onclick="addToCart('Ceaser salade', 4.00, 'assets/images/ceaserSalade.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="blt.html"><img src="assets/images/bltBurger.jpg" alt="Foto van een blt burger"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Blt burger</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop" onclick="addToCart('Blt burger', 4.50, 'assets/images/bltBurger.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="moussaka.html"><img src="assets/images/moussaka.jpg" alt="Foto van moussaka"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Moussaka</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop" onclick="addToCart('Moussaka', 4.00, 'assets/images/moussaka.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="spaghetti.html"><img src="assets/images/spaghetti.jpg" alt="Foto van spaghetti bolognese"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Spaghetti bolognese</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop"
+          onclick="addToCart('Spaghetti Bolognese', 3.50, 'assets/images/spaghetti.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="caprese.html"><img src="assets/images/capreseKip.jpg" alt="Foto van Caprese kip"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Caprese kip</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop" onclick="addToCart('Caprese kip', 4.50, 'assets/images/capreseKip.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="ribeye.html"><img src="assets/images/ribeye.jpg" alt="Foto van ribeye met boontjes en bloemkool"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Ribeye met boontjes en bloemkool</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop"
+          onclick="addToCart('Ribeye met boontjes en bloemkool', 7.50, 'assets/images/ribeye.jpg')">🛒</button>
+      </article>
+
+      <article class="flex-items-shop">
+        <figure>
+          <a href="butter_chicken.html"><img src="assets/images/butterchicken.jpg" alt="Foto van butter chicken"></a>
+          <figcaption>Foto van ChatGPT</figcaption>
+        </figure>
+        <h2>Indiase butter chicken</h2>
+        <button class="wishlist-button">&#9825;</button>
+        <button class="button-shop"
+          onclick="addToCart('Indiase Butter Chicken', 4.50, 'assets/images/butterchicken.jpg')">🛒</button>
+      </article>
+    </section>
+  </main>
+
+
+  <footer class="sticky-footer">
+
+    <p>&copy; 2024 Receptionist. Alle rechten voorbehouden.</p>
+  </footer>
+</body>
+
+</html>

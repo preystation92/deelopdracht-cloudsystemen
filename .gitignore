@@ -1,0 +1,5 @@
+*.doc
+*.docx
+myVm_key.pem
+gitpushtoken.txt
+todo.xlsx

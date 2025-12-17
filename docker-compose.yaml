@@ -1,0 +1,7 @@
+services:
+  website:
+    build: .
+    container_name: mijn-deelopddracht-website
+    ports:
+    - 80:80
+    restart: unless-stopped
