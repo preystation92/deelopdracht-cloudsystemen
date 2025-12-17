@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   caddy:
-    image: caddy:2
+    build:
+      context: .
+      dockerfile: Dockerfile.caddy
     container_name: caddy
     restart: unless-stopped
     ports:
@@ -12,6 +14,8 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy-data:/data
       - caddy-config:/config
+    environment:
+      - DUCKDNS_TOKEN=0dd60b55-6983-4a5b-9caa-ab7546050cca  
 
   website:
     build: .
