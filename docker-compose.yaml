@@ -4,7 +4,7 @@ services:
   caddy:
     build:
       context: .
-      dockerfile: Dockerfile.caddy
+      dockerfile: dockerfile.caddy
     container_name: caddy
     restart: unless-stopped
     ports:
