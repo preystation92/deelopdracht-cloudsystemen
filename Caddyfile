@@ -1,0 +1,3 @@
+deelopdrachtcloudsystemen.duckdns.org {
+    reverse_proxy mijn-website:80
+}
