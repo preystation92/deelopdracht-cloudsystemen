@@ -1,27 +1,9 @@
 version: '3.8'
 
 services:
-  caddy:
-    build:
-      context: .
-      dockerfile: dockerfile.caddy
-    container_name: caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy-data:/data
-      - caddy-config:/config
-    environment:
-      - DUCKDNS_TOKEN=0dd60b55-6983-4a5b-9caa-ab7546050cca  
-
   website:
     build: .
     container_name: mijn-website
+    ports:
+      - "80:80"
     restart: unless-stopped
-
-volumes:
-  caddy-data:
-  caddy-config:
