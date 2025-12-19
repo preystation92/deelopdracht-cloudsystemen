@@ -2,24 +2,25 @@ version: '3.8'
 
 services:
   traefik:
-    image: traefik:v3.0 
+    image: traefik:v3.0
     container_name: traefik
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"  
+      - "8080:8080"
+    volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - traefik-data:/data
     command:
-      - "--api.insecure=true" 
+      - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-      - "--certificatesresolvers.le.acme.email=your.s157201@ap.be" 
+      - "--certificatesresolvers.le.acme.email=s157201@ap.be" 
       - "--certificatesresolvers.le.acme.storage=/data/acme.json"
       - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
 
