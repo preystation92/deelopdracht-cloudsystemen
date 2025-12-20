@@ -21,7 +21,7 @@ jobs:
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             port: 22
             script: |
-              cd ~/cloudproject
+              cd cloudproject
               git pull origin main
               docker compose down
               docker compose up -d --build
