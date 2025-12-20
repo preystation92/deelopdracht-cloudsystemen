@@ -1,12 +1,27 @@
-- name: Deploy to server
-  uses: appleboy/ssh-action@v1.0.3
-  with:
-    host: ${{ secrets.SERVER_HOST }} # ← DEZE MOET ER STAAN
-    username: ubuntu
-    key: ${{ secrets.SSH_PRIVATE_KEY }}
-    script: |
-      cd ~/cloudproject
-      git pull origin main
-      docker compose down
-      docker compose up -d --build
-    port: 22
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd ~/cloudproject
+            git pull origin main
+            docker compose down
+            docker compose up -d --build
