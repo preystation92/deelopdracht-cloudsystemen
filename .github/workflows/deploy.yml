@@ -1,14 +1,12 @@
-- name: SSH to server and deploy
+- name: Deploy to server
   uses: appleboy/ssh-action@v1.0.3
   with:
-    host: ${{ secrets.SERVER_HOST }}  # <-- Deze mist in je configuratie
-    username: ${{ secrets.SERVER_USERNAME }}
+    host: ${{ secrets.SERVER_HOST }} # ← DEZE MOET ER STAAN
+    username: ubuntu
     key: ${{ secrets.SSH_PRIVATE_KEY }}
-    port: 22
     script: |
       cd ~/cloudproject
       git pull origin main
       docker compose down
       docker compose up -d --build
-    timeout: 30s
-    command_timeout: 10m
+    port: 22
