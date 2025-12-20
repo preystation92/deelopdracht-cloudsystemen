@@ -1,4 +1,4 @@
-name: Build and Deploy to Production
+name: Build and Deploy Docker Images
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,15 +18,4 @@ jobs:
 
       - name: Build Docker images
         run: docker compose build
-
-      - name: Deploy to VM via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.VM_IP }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.VM_PRIVATE_KEY }}
-          script: |
-            cd ~/cloudproject
-            git pull origin main
-            docker compose down
-            docker compose up -d --build
+# ssh komt later
