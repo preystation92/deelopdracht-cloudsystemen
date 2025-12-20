@@ -1,12 +1,32 @@
-- name: Deploy to server
-  uses: appleboy/ssh-action@v1.0.3
-  with:
-    host: ${{ secrets.SERVER_HOST }} # ← DEZE MOET ER STAAN
-    username: ubuntu
-    key: ${{ secrets.SSH_PRIVATE_KEY }}
-    script: |
-      cd ~/cloudproject
-      git pull origin main
-      docker compose down
-      docker compose up -d --build
-    port: 22
+name: Build and Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker images
+        run: docker compose build
+
+      - name: Deploy to VM via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VM_IP }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_PRIVATE_KEY }}
+          script: |
+            cd ~/cloudproject
+            git pull origin main
+            docker compose down
+            docker compose up -d --build
