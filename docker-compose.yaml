@@ -1,40 +1,39 @@
 version: '3.8'
 
 services:
-  traefik:
-    image: traefik:v3.0
-    container_name: traefik
+  caddy:
+    image: lucaslorentz/caddy-docker-proxy:2.8
+    container_name: caddy-proxy
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
+      - "443:443/udp"  # Voor HTTP/3
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - traefik-data:/data
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-      - "--certificatesresolvers.le.acme.email=s157201@ap.be" 
-      - "--certificatesresolvers.le.acme.storage=/data/acme.json"
-      - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
+      - /var/run/docker.sock:/var/run/docker.sock  # Essentieel voor Docker-detectie
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - app-network
+    labels:
+      caddy.email: s157201@ap.be  # Voor Let’s Encrypt
 
   website:
     build: .
     container_name: mijn-website
     restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - app-network
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.website.rule=Host(`deelopdrachtcloudsystemen.duckdns.org`)"
-      - "traefik.http.routers.website.entrypoints=websecure"
-      - "traefik.http.routers.website.tls=true"
-      - "traefik.http.routers.website.tls.certresolver=le"
-      - "traefik.http.services.website.loadbalancer.server.port=80"
+      caddy: deelopdrachtcloudsystemen.duckdns.org
+      caddy.reverse_proxy: "{{upstreams 80}}"
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
-  traefik-data:
+  caddy_data:
+  caddy_config:
