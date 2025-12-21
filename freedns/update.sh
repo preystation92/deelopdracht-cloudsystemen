@@ -1,0 +1,1 @@
+curl "http://sync.afraid.org/u/8z2mQnSDmq5GYsaZGcdQjDH3/?"
