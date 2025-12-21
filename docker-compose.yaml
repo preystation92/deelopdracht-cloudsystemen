@@ -2,38 +2,22 @@ version: '3.8'
 
 services:
   caddy:
-    image: lucaslorentz/caddy-docker-proxy:2.8
-    container_name: caddy-proxy
+    image: caddy:2
+    container_name: caddy
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
-      - "443:443/udp"  # Voor HTTP/3
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock  # Essentieel voor Docker-detectie
-      - caddy_data:/data
-      - caddy_config:/config
-    networks:
-      - app-network
-    labels:
-      caddy.email: s157201@ap.be  # Voor Let’s Encrypt
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy-data:/data
+      - caddy-config:/config
 
   website:
     build: .
     container_name: mijn-website
     restart: unless-stopped
-    expose:
-      - "80"
-    networks:
-      - app-network
-    labels:
-      caddy: deelopdrachtcloudsystemen.duckdns.org
-      caddy.reverse_proxy: "{{upstreams 80}}"
-
-networks:
-  app-network:
-    driver: bridge
 
 volumes:
-  caddy_data:
-  caddy_config:
+  caddy-data:
+  caddy-config:
