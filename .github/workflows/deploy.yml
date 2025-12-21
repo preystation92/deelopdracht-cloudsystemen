@@ -26,7 +26,7 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_PRIVATE_KEY }}
           script: |
-            cd ~/cloudproject
+            cd cloudproject
             git pull origin main
             docker compose down
             docker compose up -d --build
